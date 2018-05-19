@@ -24,29 +24,33 @@ public class mainMenu {
 		
 		
 		
-		
+	
 		boolean exit=true;
 		while(exit) {
-		System.out.println("Enter 1 to checkout a book");
-		System.out.println("Enter 2 to return a book");
-		System.out.println("Enter 3 to see a list of all books");
-		System.out.println("Enter 4 to search for books by title");
-		System.out.println("Enter 5 to exit");
+		System.out.println("1: Make a deposit");
+		System.out.println("2: Make a withdraw");
+		System.out.println("3: View Balance ");
+		System.out.println("4: View all transaction");
+		System.out.println("5: exit");
 
 		Scanner scan = new Scanner(System.in);
 		String input = scan.nextLine();
 		switch (input) {
 		case "1":
-			 System.out.println("this is the first case ");
+			
+			 customer.getAccnt().deposit( );
+					 
 			break;
 		case "2":
-			System.out.println("this is the second case ");
+			 
+			  
+			 customer.getAccnt().withdrawal();
 			break;
 		case "3":
-			System.out.println("this is the third case ");
+			System.out.println("Your balance is :"+customer.getAccnt().getBalance());
 			break;
 		case "4":
-			System.out.println("this is the fouth case ");
+			System.out.println("this are all the transactions ");
 			break;
 		case "5":
 			System.out.println("Thanks for visiting Wold Bank  ");
@@ -87,7 +91,7 @@ public class mainMenu {
 			System.out.println("correct ssn");
 		}else {
 			
-			System.out.println("invalid name ");
+			System.out.println("invalid ssn ");
 		}
 		
 		
