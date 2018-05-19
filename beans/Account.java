@@ -112,19 +112,19 @@ public class Account {
 		 String log;
 	     SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
 	     
-	      if(type.equals("deposit")) {
-          
-	      log=("Time: " + ft.format(dNow)+ "Deposit amount : "+this.withdrawAmount+" Remaining Balance :" + this.balance);
-	      logList.add(log);
+			      if(type.equals("deposit")) {
+		          
+			      log=("Time: " + ft.format(dNow)+ " Deposit amount : "+this.depositAmount+" Remaining Balance :" + this.balance);
+			      logList.add(log);
+			      
+			      }else if (type.equals("withdrawal")){
+			    	  
+			    	  log=("Time: " + ft.format(dNow)+ " Withdrawal amount : -"+this.withdrawAmount+" Remaining Balance :" + this.balance);
+			    	  logList.add(log);
+			      }else 
+			    	  System.out.println("incorrect type entered , data not save in log ");
 	      
-	      }else if (type.equals("withdrawal")){
-	    	  
-	    	  log=("Time: " + ft.format(dNow)+ "Withdrawal amount : -"+this.withdrawAmount+" Remaining Balance :" + this.balance);
-	    	  logList.add(log);
-	      }else 
-	    	  System.out.println("incorrect type entered , data not save in log ");
 	      
-		
 	}
 		 
 		public void viewTransactionLog () {
