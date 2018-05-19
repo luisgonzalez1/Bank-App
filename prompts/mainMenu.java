@@ -51,6 +51,7 @@ public class mainMenu {
 			break;
 		case "4":
 			System.out.println("this are all the transactions ");
+			customer.getAccnt().viewTransactionLog();
 			break;
 		case "5":
 			System.out.println("Thanks for visiting Wold Bank  ");

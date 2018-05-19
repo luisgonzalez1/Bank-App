@@ -1,5 +1,10 @@
 package com.revature.beans;
 
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Account {
@@ -9,6 +14,11 @@ public class Account {
 	private double balance;
 	private double withdrawAmount;
 	private double depositAmount;
+	
+	
+	
+	
+	private List<String> logList =new ArrayList<String>();
 	Scanner scan = new Scanner(System.in);
 		String input ="";  
 	public Account(int accntNumber, double d) {
@@ -42,9 +52,10 @@ public class Account {
 		this.depositAmount = depositAmount;
 	}
 	
+	
 	public void deposit( ){
 		
-		 System.out.println("How mush would you like to deposit?");
+		 System.out.println("How much would you like to deposit?");
 		 input = scan.nextLine();
 		 this.depositAmount =Double.parseDouble(input);
 		 
@@ -55,6 +66,8 @@ public class Account {
 		}else {
 			this.balance= this.balance+this.depositAmount;
 			System.out.println("Your new balance is " + this.balance);
+			this.addTransactionLog("deposit");
+			
 		}
 	
 	} 
@@ -73,12 +86,13 @@ public class Account {
 			
 			  if ( this.withdrawAmount > this.balance ) {
 				  
-				  System.out.println("not sufficient  balance");	
+				  System.out.println("insufficient balance");	
 				   
 				  
 			  }else {
 				  this.balance= this.balance-this.withdrawAmount;
 				  System.out.println("Your remaining balance id "+ this.balance);
+				  this.addTransactionLog("withdrawal");
 				  
 			  }
 		  
@@ -91,14 +105,43 @@ public class Account {
 	}	
 		 
 	
-	public void transactionLog () {
+	public void addTransactionLog (String type) {
 		
-		
+		 Date dNow = new Date( );
+		  
+		 String log;
+	     SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+	     
+	      if(type.equals("deposit")) {
+          
+	      log=("Time: " + ft.format(dNow)+ "Deposit amount : "+this.withdrawAmount+" Remaining Balance :" + this.balance);
+	      logList.add(log);
+	      
+	      }else if (type.equals("withdrawal")){
+	    	  
+	    	  log=("Time: " + ft.format(dNow)+ "Withdrawal amount : -"+this.withdrawAmount+" Remaining Balance :" + this.balance);
+	    	  logList.add(log);
+	      }else 
+	    	  System.out.println("incorrect type entered , data not save in log ");
+	      
 		
 	}
 		 
+		public void viewTransactionLog () {
+			
+			if(this.logList.isEmpty()) {
+				
+				System.out.println("no transactions available  ");
+			}else {
+				for (String l:this.logList) {
+					
+					System.out.println(l);
+				}
+			}
+		}
 		
 		
+		 
 	
 	
 	@Override
