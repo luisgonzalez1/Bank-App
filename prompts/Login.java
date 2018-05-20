@@ -35,7 +35,8 @@ public class Login implements Prompt {
 		//String input = scan.nextLine();
 		// TODO Auto-generated method stub
 		 
-		
+		boolean correct=true;
+		while(correct) {
 		System.out.println("Please enter Username ");
 		
 		String userName = scan.nextLine();
@@ -43,12 +44,20 @@ public class Login implements Prompt {
 		System.out.println("Please enter Password ");
 		
 	    String Password = scan.nextLine();
+	    
 	     
 	     if(personDao.FindByUserAndPass(userName, Password)) {
+	    	 
 	    	 System.out.println("user found");
+	    	 
+	    	 Person loggedUser=personDao.getByUserAndPass(userName, Password);
+	    	 
+	    	personDao.setCurrentlyLogged(loggedUser);
+	    	 
+	    	 correct=false;
 	     }else 
 	    	 System.out.println("not found try again");
-		
+	     }
 		return new mainMenu() ;
 	}
 

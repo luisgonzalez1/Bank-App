@@ -11,8 +11,8 @@ public interface PersonDao {
 	Person FindByAccntNumber(int accntNumber);
 	boolean FindByUserAndPass(String userName , String Password);
 	List<Person> findAll();
-	
-	
+	boolean setCurrentlyLogged(Person p);
+	Person  getCurrentlyLogged();
 	
 	
 

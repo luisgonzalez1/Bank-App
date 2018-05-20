@@ -108,6 +108,60 @@ public class PersonSerializer implements PersonDao  {
 		return false;
 	
 }
+	
+	public Person getByUserAndPass(String userName , String Password) {
+		
+		List<Person> results = findAll();
+		for (Person l: results) {
+			if (l.getPassWord().equals(Password) && l.getUserName().equals(userName)) {
+				return l ;
+				
+			}
+		
+		
+	}
+		return null;
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	public boolean setCurrentlyLogged(Person p) {
+		
+		 
+		try (ObjectOutputStream outStream = new ObjectOutputStream(new FileOutputStream("CurrentlyLogged.txt"))){
+			outStream.writeObject(p); // serialize the list to the file
+			return true;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		return false;
+		
+	}
+	public Person  getCurrentlyLogged() {
+		
+		
+		
+		return null;
+		
+			
+	}
+	
+	
+	
+	
+	
 		
 }// end person dao
 	
