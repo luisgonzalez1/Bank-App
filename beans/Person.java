@@ -14,6 +14,11 @@ public class Person implements Serializable {
 	
 	
 	
+	public Person() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Person(String name, String lastname, int ssn) {
 		super();
 		this.name = name;

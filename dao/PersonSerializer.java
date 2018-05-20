@@ -9,6 +9,8 @@ import java.io.ObjectOutputStream;
  
 import java.util.ArrayList;
 import java.util.List;
+
+import com.revature.beans.Account;
 import com.revature.beans.Person;
 
 public class PersonSerializer implements PersonDao  {
@@ -76,6 +78,19 @@ public class PersonSerializer implements PersonDao  {
 		return null;
 }
 
+	public Person FindByAccntNumber(int accntNumber) {
+		
+		List<Person> results = findAll();
+		for (Person l: results) {
+			if (l.getAccnt().getAccntNumber()== accntNumber) {
+				return l ;
+				
+			}
+		
+		
+	}
+		return null;
 	
+}
 	
 }

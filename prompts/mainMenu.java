@@ -1,6 +1,8 @@
 package com.revature.prompts;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.revature.beans.Account;
@@ -18,21 +20,45 @@ public class mainMenu {
 		PersonDao personDao = new PersonSerializer();
 		mainMenu main =new mainMenu();
 		
-		Account accnt = new Account(1111,100.00);
+		Account accnt1 = new Account(0001,100.00);
+		Account accnt2 = new Account(0002,10000.00);
+		Account accnt3 = new Account(0003,565284.00);
+		Account accnt4 = new Account(0004,50.00);
+		Account accnt5 = new Account(0005,9000.00);
+		Account accnt6 = new Account(0006,500000000.00);
+		 
 		
-		Person customer = new Person("Luis","Gonzalez",599441525,accnt);
+		Person customer1 = new Person("Luis","Gonzalez",599441525,accnt1);
+		Person customer2 = new Person("Carlos","Acevedo",102225445,accnt2);
+		Person customer3 = new Person("Lois","Vuton",854859988,accnt3);
+		Person customer4 = new Person("Naruto","Uzumaki",141554848,accnt4);
+		Person customer5 = new Person("Sasuke","Uchiha",686558855,accnt5);
+		Person customer6 = new Person("Ligh","Yagami",225588485,accnt6);
 		
+		 
 		try {
-		personDao.save(customer);
+		personDao.save(customer1);
 		} catch (NumberFormatException e) {
 		System.out.println("Invalid Input, try again");
 		}
-		 
+		
+		List<Person> testFind = new ArrayList<>();  
+		System.out.println("primera lista ");
+		 for (Person l :testFind) {
 			 
-		 
+			 System.out.println(l);
+		 }
+		 testFind=personDao.findAll();
+		 System.out.println("segunda lista ");
+		 for (Person l :testFind) {
+			 
+			 System.out.println(l);
+		 }
+         
+		Person p = personDao.FindByAccntNumber(2);
+		System.out.println("the onject is "+p);
 
 		 
-
 		 
 		//main.Login(customer);
 			
