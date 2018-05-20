@@ -50,13 +50,24 @@ public class Person implements Serializable {
 	public Account getAccnt() {
 		return accnt;
 	}
-	public Person(String name, String lastname, int ssn, Account accnt) {
+//	public Person(String name, String lastname, Account accnt) {
+//		super();
+//		this.name = name;
+//		this.lastname = lastname;		 
+//		this.accnt = accnt;
+//	}
+	
+	
+	
+	public Person(String name, String lastname, Account accnt, String userName, String passWord) {
 		super();
 		this.name = name;
-		this.lastname = lastname;		 
+		this.lastname = lastname;
 		this.accnt = accnt;
+		this.userName = userName;
+		this.passWord = passWord;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}

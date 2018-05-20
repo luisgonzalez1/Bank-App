@@ -93,4 +93,31 @@ public class PersonSerializer implements PersonDao  {
 	
 }
 	
+	
+	public boolean FindByUserAndPass(String userName , String Password) {
+		
+		List<Person> results = findAll();
+		for (Person l: results) {
+			if (l.getPassWord().equals(Password) && l.getUserName().equals(userName) ) {
+				return true ;
+				
+			}
+		
+		
+	}
+		return false;
+	
 }
+		
+}// end person dao
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

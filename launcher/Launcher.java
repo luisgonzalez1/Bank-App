@@ -8,7 +8,7 @@ import com.revature.prompts.mainMenu;
 public class Launcher {
 
 	public static void main(String[] args) {
-		Prompt currentPromp = new Login();
+		Prompt currentPromp = (Prompt) new Login();
 		while(true) {
 			currentPromp = currentPromp.run();
 		}

@@ -9,6 +9,7 @@ public interface PersonDao {
 	
 	boolean save(Person b);
 	Person FindByAccntNumber(int accntNumber);
+	boolean FindByUserAndPass(String userName , String Password);
 	List<Person> findAll();
 	
 	
