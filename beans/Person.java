@@ -1,11 +1,19 @@
 package com.revature.beans;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable {
 	
-	private String name;
-	private String lastname;
-	private int ssn;
-	private Account accnt;
+	
+	private   String name;
+	private   String lastname;
+	private   int ssn;
+	private   Account accnt;
+	
+	
+	
+	
+	
 	public Person(String name, String lastname, int ssn) {
 		super();
 		this.name = name;

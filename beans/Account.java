@@ -1,13 +1,14 @@
 package com.revature.beans;
 
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class Account {
+public class Account implements Serializable {
 	
 	
 	private int accntNumber;
@@ -19,8 +20,8 @@ public class Account {
 	
 	
 	private List<String> logList =new ArrayList<String>();
-	Scanner scan = new Scanner(System.in);
-		String input ="";  
+//	Scanner scan = new Scanner(System.in);
+//	String input ="";  
 	public Account(int accntNumber, double d) {
 		super();
 		this.accntNumber = accntNumber;
@@ -54,6 +55,8 @@ public class Account {
 	
 	
 	public void deposit( ){
+		Scanner scan = new Scanner(System.in);
+		String input =""; 
 		
 		 System.out.println("How much would you like to deposit?");
 		 input = scan.nextLine();
@@ -77,6 +80,9 @@ public class Account {
 	 * newBalance is equals to  balance - amount 
 	 */
 	public void withdrawal ( ) {
+		
+		Scanner scan = new Scanner(System.in);
+		String input =""; 
 		
 		if (this.balance  >0 ) {
 			

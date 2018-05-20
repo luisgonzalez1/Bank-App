@@ -1,23 +1,40 @@
 package com.revature.prompts;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import com.revature.beans.Account;
+
 import com.revature.beans.Person;
+
+
+import com.revature.dao.PersonDao;
+import com.revature.dao.PersonSerializer;
 
 public class mainMenu {
 
 	public static void main(String[] args) {
 		
-		
+		PersonDao personDao = new PersonSerializer();
 		mainMenu main =new mainMenu();
 		
 		Account accnt = new Account(1111,100.00);
 		
 		Person customer = new Person("Luis","Gonzalez",599441525,accnt);
 		
+		try {
+		personDao.save(customer);
+		} catch (NumberFormatException e) {
+		System.out.println("Invalid Input, try again");
+		}
 		 
-		main.Login(customer);
+			 
+		 
+
+		 
+
+		 
+		//main.Login(customer);
 			
 			
 			
@@ -25,7 +42,7 @@ public class mainMenu {
 		
 		
 	
-		boolean exit=true;
+		/*boolean exit=true;
 		while(exit) {
 		System.out.println("1: Make a deposit");
 		System.out.println("2: Make a withdraw");
@@ -64,7 +81,7 @@ public class mainMenu {
 				
 		}//end of while 
 
-		
+		*/
 		
 		
 		
