@@ -7,13 +7,18 @@ public class Person implements Serializable {
 	
 	private   String name;
 	private   String lastname;
-	private   int ssn;
 	private   Account accnt;
+	private   String userName;
+	private   String passWord;
 	
 	
 	
 	
 	
+	
+	
+	 
+
 	public Person() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -23,7 +28,7 @@ public class Person implements Serializable {
 		super();
 		this.name = name;
 		this.lastname = lastname;
-		this.ssn = ssn;
+		 
 	}
 	
 	public void setAccnt(Account accnt) {
@@ -41,27 +46,35 @@ public class Person implements Serializable {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public int getSsn() {
-		return ssn;
-	}
-	public void setSsn(int ssn) {
-		this.ssn = ssn;
-	}
-	
+	 	
 	public Account getAccnt() {
 		return accnt;
 	}
 	public Person(String name, String lastname, int ssn, Account accnt) {
 		super();
 		this.name = name;
-		this.lastname = lastname;
-		this.ssn = ssn;
+		this.lastname = lastname;		 
 		this.accnt = accnt;
 	}
+	
+	public String getUserName() {
+		return userName;
+	}
 
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", lastname=" + lastname + ", ssn=" + ssn + ", accnt=" + this.accnt.getAccntNumber() + "]";
+		return "Person [name=" + name + ", lastname=" + lastname +", accnt=" + this.accnt.getAccntNumber() + "]";
 	}
 	
 	
