@@ -149,16 +149,46 @@ public class PersonSerializer implements PersonDao  {
 		return false;
 		
 	}
+	
 	public Person  getCurrentlyLogged() {
 		
-		
-		
+		try (ObjectInputStream  inStream= new ObjectInputStream(new FileInputStream("CurrentlyLogged.txt"))) {
+			try {
+				return  (Person) inStream.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+						
 		return null;
 		
-			
+					
 	}
 	
-	
+	public void clearLoggedFile() {
+		
+		 
+		try (ObjectOutputStream outStream = new ObjectOutputStream(new FileOutputStream("CurrentlyLogged.txt"))){
+			outStream.writeObject(""); // serialize the list to the file
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		
+		
+	}
 	
 	
 	

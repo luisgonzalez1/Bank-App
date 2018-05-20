@@ -21,52 +21,60 @@ public class mainMenu   implements Prompt{
 	public Prompt run() {
 		// TODO Auto-generated method stub
 		
-		
-//		boolean exit=true;
-//		while(exit) {
-//		System.out.println("1: Make a deposit");
-//		System.out.println("2: Make a withdraw");
-//		System.out.println("3: View Balance ");
-//		System.out.println("4: View all transaction");
-//		System.out.println("5: exit");
-//
-//		Scanner scan = new Scanner(System.in);
-//		String input = scan.nextLine();
-//		switch (input) {
-//		case "1":
-//			
-//			 customer.getAccnt().deposit( );
-//					 
-//			break;
-//		case "2":
-//			 
-//			  
-//			 customer.getAccnt().withdrawal();
-//			break;
-//		case "3":
-//			System.out.println("Your balance is :"+customer.getAccnt().getBalance());
-//			break;
-//		case "4":
-//			System.out.println("this are all the transactions ");
-//			customer.getAccnt().viewTransactionLog();
-//			break;
-//		case "5":
-//			System.out.println("Thanks for visiting Wold Bank  ");
-//			exit=false;
-//			break;
-//		default:
-//			System.out.println("Invalid option");
-//			break;
-//		}
-//				
-//		}//end of while 
-//		return this;
-//	}
-//}	
 		PersonDao personDao = new PersonSerializer();
+		Person customer =personDao.getCurrentlyLogged();
+		personDao.clearLoggedFile();
+		System.out.println(customer);
+		
+		
+		
+		
+		
+		boolean exit=true;
+		while(exit) {
+		System.out.println("1: Make a deposit");
+		System.out.println("2: Make a withdraw");
+		System.out.println("3: View Balance ");
+		System.out.println("4: View all transaction");
+		System.out.println("5: exit");
+
+		Scanner scan = new Scanner(System.in);
+		String input = scan.nextLine();
+		switch (input) {
+		case "1":
+			
+			 customer.getAccnt().deposit( );
+					 
+			break;
+		case "2":
+			 
+			  
+			 customer.getAccnt().withdrawal();
+			break;
+		case "3":
+			System.out.println("Your balance is :"+customer.getAccnt().getBalance());
+			break;
+		case "4":
+			System.out.println("this are all the transactions ");
+			customer.getAccnt().viewTransactionLog();
+			break;
+		case "5":
+			System.out.println("Thanks for visiting Wold Bank  ");
+			exit=false;
+			break;
+		default:
+			System.out.println("Invalid option");
+			break;
+		}
+				
+		}//end of while 
+		return this;
+	}
+}	
+		
 		//mainMenu main =new mainMenu();
 		
-	Account accnt1 = new Account(0001,100.00);
+//	Account accnt1 = new Account(0001,100.00);
 //		Account accnt2 = new Account(0002,10000.00);
 //		Account accnt3 = new Account(0003,565284.00);
 //		Account accnt4 = new Account(0004,50.00);
@@ -106,11 +114,11 @@ public class mainMenu   implements Prompt{
 //			
 			
 			
-		return null;
-	}
-
-}	
-		
+//		return this;
+//	}
+//
+//}	
+//		
 
 		
 		
