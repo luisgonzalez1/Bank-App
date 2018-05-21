@@ -1,5 +1,11 @@
 package com.revature.prompts;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,14 +14,19 @@ import com.revature.beans.Person;
 import com.revature.dao.PersonDao;
 import com.revature.dao.PersonSerializer;
 
-public class CreateUser implements Prompt {
+public class CreateUser implements Prompt   {
 	
 	
 		@Override
 		public Prompt run() {
+//			setAccntNumberFile();
+//			System.out.println("number saved on file");
+			 
 			
 			PersonDao personDao = new PersonSerializer();
 			List<Person> list = personDao.findAll();
+			double amount=0;
+			String userName="";
 			
 			for (Person p : list) {
 				
@@ -35,30 +46,53 @@ public class CreateUser implements Prompt {
 			System.out.println("Please enter your Last Name");
 			String lastName = scan.nextLine();
 			
-			System.out.println("Please enter your Username");
-			String userName = scan.nextLine();
 			
+			
+			/////////////////////////////
+			
+			boolean exitUsername=true;
+			while(exitUsername) {
+			System.out.println("Please enter your Username");
+			 userName = scan.nextLine();
+			
+			if(personDao.userNameExist(userName))
+			{
+				System.out.println("Sorry that user name has already been taken");
+				System.out.println("Please try a different user");
+			}else exitUsername=false;
+			}
 			System.out.println("Please enter your password");
 			String passWord = scan.nextLine();
 			
-			System.out.println("How much will you start your accnt with");
-			double amount = Double.parseDouble(scan.nextLine());
+			////////////////////////////
+			
 			boolean exitAmount=true;
 			while(exitAmount) {
+			System.out.println("How much will you start your accnt with");
+		    amount = Double.parseDouble(scan.nextLine());
+			
+			
 			if (amount <=0) {
-				System.out.println("Please enter anoter amount ");
-				System.out.println("How much will you start your accnt with");
+				System.out.println("amount not valid ");
+				System.out.println("Please try a different amount");
+				 
 				amount = Double.parseDouble(scan.nextLine());
 				
 			} else exitAmount=false;
 		}
 			
-			int accntNumber = 6;
-			accntNumber+=accntNumber;
+			
+			 
+			int accntNumber = getAccntNumberFromFile();
+			accntNumber+=1;
+			setAccntNumberFile(accntNumber);
+			 
+			
+ 
 					
 			 
 			Person customer = new Person(name, lastName, new Account(accntNumber,amount ), userName, passWord);
-			
+			 
 			
 			
 			try {
@@ -70,11 +104,50 @@ public class CreateUser implements Prompt {
 
 			System.out.println("new user added : "+ customer);
 			
-			
+			personDao.setCurrentlyLogged(customer);
 			
 			
 			return this;
+	}
+		
+		public void setAccntNumberFile (int number) {
+			
+			
+			try(ObjectOutputStream outStream  = new ObjectOutputStream(new FileOutputStream("number.txt"))) {
+				 
+				 
+				outStream.writeInt(number); 
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 
+			
+			 
+		}
+		
+		
+		public int getAccntNumberFromFile() {
+			
+			try(ObjectInputStream  inStream= new ObjectInputStream(new FileInputStream("number.txt"))) {
+				
+				return inStream.readInt() ;
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			
+			
+			return 0;
+			
 		}
 	
-}
+}// end
 

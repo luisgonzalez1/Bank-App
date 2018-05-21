@@ -85,7 +85,7 @@ public class Person implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", lastname=" + lastname +", accnt=" + this.accnt.getAccntNumber() + "]";
+		return "Person [name=" + name + ", lastname=" + lastname +", accnt=" + this.accnt.getAccntNumber() +", userName=" + userName +  "]";
 	}
 	
 	

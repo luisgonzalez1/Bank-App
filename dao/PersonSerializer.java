@@ -122,12 +122,24 @@ public class PersonSerializer implements PersonDao  {
 	}
 		return null;
 		
+				
+	}
+	
+public boolean userNameExist(String userName ) {
 		
-		
+		List<Person> results = findAll();
+		for (Person l: results) {
+			if ( l.getUserName().equals(userName)) {
+				return true ;
+				
+			}
 		
 		
 	}
-	
+		return false;
+		
+				
+	}
 	
 	
 	
@@ -190,7 +202,7 @@ public class PersonSerializer implements PersonDao  {
 		
 	}
 	
-	
+	 
 	
 		
 }// end person dao

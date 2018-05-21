@@ -15,7 +15,7 @@ public interface PersonDao {
 	boolean setCurrentlyLogged(Person p);
 	Person  getCurrentlyLogged();
 	void clearLoggedFile();
-	 
+	boolean userNameExist(String userName );
 	
 
 }
