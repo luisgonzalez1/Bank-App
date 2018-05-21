@@ -101,14 +101,47 @@ public class CreateUser implements Prompt   {
 				System.out.println("Invalid Input, try again");
 				}
 
-
+          ///////new user has been added  ////// 
 			System.out.println("new user added : "+ customer);
 			
-			personDao.setCurrentlyLogged(customer);
+			 
+			
+			
+			boolean continueOrExit = true;
+			while(continueOrExit) {
+				
+				System.out.println("Your accnt has been created");
+				System.out.println("What would you like to do");
+				System.out.println("1: Manage accnt");
+				System.out.println("1: exit accnt");
+				String input=  scan.nextLine();
+				switch (input){
+					
+				case "1":
+					
+					personDao.setCurrentlyLogged(customer);
+					
+					return new mainMenu();
+					
+					//break;
+				case "2":
+					System.out.println("Thanks for using our bank");
+					continueOrExit=false;
+					break;
+				
+				default:
+				System.out.println("Invalid option");
+				
+				break;
+				
+				}
+			}// end while
+			
+			
 			
 			
 			return this;
-	}
+	}// end run 
 		
 		public void setAccntNumberFile (int number) {
 			

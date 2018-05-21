@@ -35,7 +35,7 @@ public class Login implements Prompt {
 		Scanner scan = new Scanner(System.in);
 		//String input = scan.nextLine();
 		// TODO Auto-generated method stub
-		
+		System.out.println("i'm in loggin");
 		
 		boolean exit=true;
 		while(exit) {
@@ -45,14 +45,14 @@ public class Login implements Prompt {
 		System.out.println("2: Login");
 		System.out.println("3: exit");
 
-		Scanner scan = new Scanner(System.in);
+		 scan = new Scanner(System.in);
 		String input = scan.nextLine();
 		switch (input) {
 		case "1":
 			
 			return new CreateUser();
 			
-			break;
+			//break;
 		
 		
 		case "2":
@@ -78,6 +78,7 @@ public class Login implements Prompt {
 	    	personDao.setCurrentlyLogged(loggedUser);
 	    	 
 	    	 correct=false;
+	    	 return new mainMenu() ;
 	     }else 
 	    	 System.out.println("not found try again");
 	     }
