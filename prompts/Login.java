@@ -15,17 +15,18 @@ public class Login implements Prompt {
 	@Override
 	public Prompt run() { 
 		PersonDao personDao = new PersonSerializer();
-//		Account accnt1 = new Account(0001,100.00);
-//		Person customer1 = new Person("Pedro", "Figueroa", accnt1, "Ped100", "1234");
+		Account accnt1 = new Account(0001,100.00);
+		Person admin = new Person("Admin", "Admin", accnt1, "Admin", "1234");
 		
 		
 		 
-//		try {
-//		personDao.save(customer1);
-//		} catch (NumberFormatException e) {
-//		System.out.println("Invalid Input, try again");
-//		}
-//		
+		try {
+		personDao.save(admin);
+		} catch (NumberFormatException e) {
+		System.out.println("Invalid Input, try again");
+		}
+		
+		System.out.println(admin);
 		//Account accnt = new Account(0001,100.00);
 		//Person customer = new Person("Carlos","Acevedo",accnt);
 		
@@ -34,6 +35,9 @@ public class Login implements Prompt {
 		Scanner scan = new Scanner(System.in);
 		//String input = scan.nextLine();
 		// TODO Auto-generated method stub
+		char a ='a';
+		a+=5;
+		System.out.println(a);
 		 
 		boolean correct=true;
 		while(correct) {
