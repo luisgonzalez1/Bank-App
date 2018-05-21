@@ -127,6 +127,15 @@ public class Account implements Serializable {
 			    	  
 			    	  log=("Time: " + ft.format(dNow)+ " Withdrawal amount : -"+this.withdrawAmount+" Remaining Balance :" + this.balance);
 			    	  logList.add(log);
+			    	  
+			    	  
+			    	  /*
+			    	   * Here goes saving log into file
+			    	   */
+			    	  
+			    	  
+			    	  
+			    	  
 			      }else 
 			    	  System.out.println("incorrect type entered , data not save in log ");
 	      

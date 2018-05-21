@@ -21,15 +21,19 @@ public class adminMenu implements Prompt {
 		personDao.clearLoggedFile();
 		customers = personDao.findAll();
 		
-		System.out.println("Welcome admin "+ admin.getName()  );
+		
+		boolean exitAdmin=true;
+		while(exitAdmin) {
+		System.out.println("Welcome admin ");
 		System.out.println("What would you like to do ");
 		System.out.println("1: See all Users ");
-		System.out.println("2: exit ");
+		System.out.println("2:See all users transactions");
+		System.out.println("3: exit ");
 		
 		String option =scan.nextLine();
-		boolean exitAdmin=true;
 		
-		while(exitAdmin) {
+		
+		
 			switch(option) {
 			
 			case "1":
@@ -44,10 +48,26 @@ public class adminMenu implements Prompt {
 				
 				break;
 			case "2":
+				
+				for (Person p: customers ) {
+					
+					System.out.println(p.getName());
+					System.out.println("=================================");
+					System.out.println(p.getAccnt());
+					System.out.println("=================================");
+					p.getAccnt().viewTransactionLog();
+					System.out.println("");
+				}
+				 
+				
+				break;
+				
+			case "3":
 				 
 				exitAdmin=false;
 				
 				break;
+			
 			
 				
 			default:
