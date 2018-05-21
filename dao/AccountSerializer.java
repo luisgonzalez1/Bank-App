@@ -21,8 +21,20 @@ public class AccountSerializer implements AccountDao {
 		return false;
 	}
 
+//	@Override
+//	public List<Account> findAll() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
 	@Override
-	public List<Account> findAll() {
+	public void saveLog(String l ) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<String> getlogs() {
 		// TODO Auto-generated method stub
 		return null;
 	}

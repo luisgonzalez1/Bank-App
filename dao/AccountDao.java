@@ -11,7 +11,7 @@ public interface AccountDao {
 	boolean save(Account b);
 	
 	
-	List<Account> findAll();
-	
+	public boolean saveLog (String l);
+	public List<String> findAllLogs ();
 
 }

@@ -15,17 +15,19 @@ public class Account implements Serializable {
 	private double balance;
 	private double withdrawAmount;
 	private double depositAmount;
+    private String  log; // adding logs to the class accounts
 	
 	
 	
 	
-	private List<String> logList =new ArrayList<String>();
+ 
 //	Scanner scan = new Scanner(System.in);
 //	String input ="";  
 	public Account(int accntNumber, double d) {
 		super();
 		this.accntNumber = accntNumber;
 		this.balance = d;
+		 
 		
 	}
 	public int getAccntNumber() {
@@ -52,6 +54,14 @@ public class Account implements Serializable {
 	public void setDepositAmount(double depositAmount) {
 		this.depositAmount = depositAmount;
 	}
+	// adding setters and getters of the log variable
+	
+	public String getLogs() {
+		return log;
+	}
+	public void setLogs(String logs) {
+		this.log = log;
+	}
 	
 	
 	public void deposit( ){
@@ -74,6 +84,7 @@ public class Account implements Serializable {
 		}
 	
 	} 
+	
 	/*
 	 * if the balance >0 
 	 * if the amount > balance  
