@@ -106,7 +106,7 @@ public class CreateUser implements Prompt   {
 			
 			 
 				personDao.save(customer);
-				accntDao.save(accnt);
+				accntDao.saveBalance(amount ,customer.getAccnt().getAccntNumber() );
 
           ///////new user has been added  ////// 
 			System.out.println("new user added : "+ customer);

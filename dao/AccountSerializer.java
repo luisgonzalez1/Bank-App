@@ -166,5 +166,68 @@ public Account FindByAccntNumber(int accntNumber) {
 		return null;
 	
 }
+
+public Account FindByAccntByUser(Person p) {
+	
+	List<Account> results = findAll();
+	for (Account a: results) {
+		if (p.getAccnt().getAccntNumber()== a.getAccntNumber()) {
+			return a ;
+			
+		}
+	
+	
+}
+	return null;
+	
+	
+	
+	
+}
+
+@Override
+public void saveBalance(double balance, int accnt) {
+	// TODO Auto-generated method stub
+	
+	try(ObjectOutputStream outStream  = new ObjectOutputStream(new FileOutputStream(String.valueOf(accnt)+" Balance.txt"))) {
+		 
+		 
+		outStream.writeDouble(balance);
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	 
+	
+	
+	
+	
+}
+
+@Override
+public double getBlance(int accnt) {
+	// TODO Auto-generated method stub
+	
+	try(ObjectInputStream  inStream= new ObjectInputStream(new FileInputStream(String.valueOf(accnt)+" Balance.txt"))) {
+		
+		return inStream.readDouble();
+		
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} 
+	
+	
+	return 0;
+	//return null;
+
+}
+
 	
 }// end  

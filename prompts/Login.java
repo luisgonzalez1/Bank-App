@@ -26,14 +26,15 @@ public class Login implements Prompt {
 		 * Displaying Customers list for testing 
 		 */
 		List<Person> customers =new ArrayList<Person>(); 	 
-	    customers = personDao.findAll();
+	   customers = personDao.findAll();
 	    AccountDao accntDao =new AccountSerializer();
-		for(Person p:customers) {
-			
-			System.out.println(p);
+	for(Person p:customers) {
+		
+		System.out.println(p);
 		}
 	    
 		 //accntDao.saveLog("Administrator no transaction to view",0);
+		//accntDao.saveBalance(0, 0);
 	    
 		boolean exit=true;
 		while(exit) {

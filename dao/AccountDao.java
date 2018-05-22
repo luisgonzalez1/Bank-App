@@ -14,5 +14,7 @@ public interface AccountDao {
 	
 	public boolean saveLog (String l, int accnt);
 	public List<String> findAllLogs (int accnt);
-
+	public Account FindByAccntByUser(Person p);
+	public void saveBalance(double balance ,int accntnumber );
+	public double getBlance ( int accntnumber);
 }

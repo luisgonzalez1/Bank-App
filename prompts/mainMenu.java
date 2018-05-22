@@ -23,7 +23,7 @@ public class mainMenu   implements Prompt{
 		
 		PersonDao personDao = new PersonSerializer();
 		Person customer =personDao.getCurrentlyLogged();
-		personDao.clearLoggedFile();
+		//personDao.clearLoggedFile();
 		System.out.println(customer);
 		
 		
@@ -42,7 +42,7 @@ public class mainMenu   implements Prompt{
 		String input = scan.nextLine();
 		switch (input) {
 		case "1":
-			
+			  
 			 customer.getAccnt().deposit( );
 					 
 			break;
