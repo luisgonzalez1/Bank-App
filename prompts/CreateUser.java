@@ -97,18 +97,16 @@ public class CreateUser implements Prompt   {
 			setAccntNumberFile(accntNumber);
 			 
 			
- 
+    
 					
-			 
-			Person customer = new Person(name, lastName, new Account(accntNumber,amount ), userName, passWord);
-			 
+			Account accnt = new Account(accntNumber,amount );
+			Person customer = new Person(name, lastName, accnt, userName, passWord);
 			
 			
-			try {
+			
+			 
 				personDao.save(customer);
-				} catch (NumberFormatException e) {
-				System.out.println("Invalid Input, try again");
-				}
+				accntDao.save(accnt);
 
           ///////new user has been added  ////// 
 			System.out.println("new user added : "+ customer);

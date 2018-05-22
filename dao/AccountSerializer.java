@@ -82,5 +82,89 @@ public class AccountSerializer implements AccountDao {
 		return null;
 	}
 
- 
+	@Override
+	public boolean save(Account b) {
+		
+		List<Account> activeAccnts = findAll();
+		if (activeAccnts == null) { // initialize a new list if none was given to us
+			activeAccnts = new ArrayList<>();
+		}
+		
+		// add the new book to the list
+				activeAccnts.add(b);
+			
+			try(ObjectOutputStream outStream = new ObjectOutputStream(new FileOutputStream("Accnts.txt"))) {
+				
+				outStream.writeObject(activeAccnts); // serialize the list to the file
+				return true;
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 
+		
+		 
+		
+		return false;
+		
+		
+		
+		
+		 
+	}
+
+	@Override
+	public List<Account> findAll() {
+		 
+		try (ObjectInputStream  inStream= new ObjectInputStream(new FileInputStream("Accnts.txt"))){
+			try {
+				return (List<Account>) inStream.readObject();
+			
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		
+		
+		
+	} catch (FileNotFoundException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+		return null;
+		
+		
+		
+	}
+
+public Account FindByAccntNumber(int accntNumber) {
+		
+		List<Account> results = findAll();
+		for (Account a: results) {
+			if (a.getAccntNumber()== accntNumber) {
+				return a ;
+				
+			}
+		
+		
+	}
+		return null;
+	
 }
+	
+}// end  

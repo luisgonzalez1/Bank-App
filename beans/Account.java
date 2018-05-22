@@ -42,7 +42,11 @@ public class Account implements Serializable {
 		this.accntNumber = accntNumber;
 	}
 	public double getBalance() {
-		return balance;
+		
+		AccountDao accntDao =new AccountSerializer();
+		Account account =accntDao.FindByAccntNumber(this.accntNumber);
+		this.balance=account.balance;
+		return this.balance;
 	}
 	public void setBalance(double balance) {
 		this.balance = balance;
@@ -71,6 +75,9 @@ public class Account implements Serializable {
 	}
 	
 	public void deposit( ){
+		AccountDao accntDao =new AccountSerializer();
+		Account account =accntDao.FindByAccntNumber(this.accntNumber);
+		this.balance=account.balance;
 		Scanner scan = new Scanner(System.in);
 		String input =""; 
 		
@@ -95,8 +102,10 @@ public class Account implements Serializable {
 		}else {
 			this.balance= this.balance+this.depositAmount;
 			System.out.println("Your new balance is " + this.balance);
-			this.addTransactionLog("deposit");
 			
+			this.addTransactionLog("deposit");
+			account.balance=this.balance;
+			accntDao.save(account);
 		}
 	
 	} 
@@ -107,9 +116,14 @@ public class Account implements Serializable {
 	 * newBalance is equals to  balance - amount 
 	 */
 	public void withdrawal ( ) {
+		AccountDao accntDao =new AccountSerializer();
+		Account account =accntDao.FindByAccntNumber(this.accntNumber);
+		this.balance=account.balance;
 		
 		Scanner scan = new Scanner(System.in);
 		String input =""; 
+		
+		
 		
 		if (this.balance  >0 ) {
 			
@@ -140,7 +154,10 @@ public class Account implements Serializable {
 					  }else {
 				  this.balance= this.balance-this.withdrawAmount;
 				  System.out.println("Your remaining balance id "+ this.balance);
-				  this.addTransactionLog("withdrawal");				  
+				  this.addTransactionLog("withdrawal");		
+				  
+				  account.balance=this.balance;
+				  accntDao.save(account);
 			  }		  
 		}else {
 			

@@ -8,8 +8,9 @@ import com.revature.beans.Person;
 
 public interface AccountDao {
 	
- 
-	
+	boolean save(Account b);
+	List<Account> findAll();
+	Account FindByAccntNumber(int accntNumber);
 	
 	public boolean saveLog (String l, int accnt);
 	public List<String> findAllLogs (int accnt);
