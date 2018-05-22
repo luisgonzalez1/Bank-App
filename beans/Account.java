@@ -5,7 +5,9 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.revature.dao.AccountDao;
@@ -137,12 +139,13 @@ public class Account implements Serializable {
 		          
 			      this.log=("Time: " + ft.format(dNow)+ " Deposit amount : "+this.depositAmount+" Remaining Balance :" + this.balance);
 			      //logList.add(log);
-			      accntDao.saveLog(this.log);
+			      
+			      accntDao.saveLog(this.log,this.accntNumber );
 			      }else if (type.equals("withdrawal")){
 			    	  
-			    	  this.log=("Time: " + ft.format(dNow)+ " Withdrawal amount : -"+this.withdrawAmount+" Remaining Balance :" + this.balance);
+			    	  this.log=("  Time: " + ft.format(dNow)+ " Withdrawal amount : -"+this.withdrawAmount+" Remaining Balance :" + this.balance);
 			    	  //logList.add(log);
-			    	  accntDao.saveLog(this.log);
+			    	  accntDao.saveLog(this.log,this.accntNumber);
 			    	  
 			    	  /*
 			    	   * Here goes saving log into file
@@ -160,14 +163,17 @@ public class Account implements Serializable {
 		public void viewTransactionLog () {
 			AccountDao accntDao =new AccountSerializer();
 			List<String> logs = new ArrayList<>();
-			logs=accntDao.findAllLogs();
+			logs=accntDao.findAllLogs(this.accntNumber);
 			if(logs.isEmpty()) {
 				
 				System.out.println("no transactions available  ");
 			}else {
 				for (String l:logs) {
 					
+					
+					
 					System.out.println(l);
+					
 				}
 			}
 		}

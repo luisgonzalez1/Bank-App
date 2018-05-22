@@ -7,6 +7,8 @@ import java.util.Scanner;
 import com.revature.beans.Account;
 
 import com.revature.beans.Person;
+import com.revature.dao.AccountDao;
+import com.revature.dao.AccountSerializer;
 import com.revature.dao.PersonDao;
 import com.revature.dao.PersonSerializer;
 
@@ -25,12 +27,13 @@ public class Login implements Prompt {
 		 */
 		List<Person> customers =new ArrayList<Person>(); 	 
 	    customers = personDao.findAll();
+	    AccountDao accntDao =new AccountSerializer();
 		for(Person p:customers) {
 			
 			System.out.println(p);
 		}
 	    
-	    
+		 accntDao.saveLog("Aministrator no transaction to view",0);
 	    
 		boolean exit=true;
 		while(exit) {

@@ -41,6 +41,7 @@ public class adminMenu implements Prompt {
 				
 				for (Person p: customers ) {
 					
+					 
 					System.out.println(p);
 					
 				}
@@ -64,7 +65,9 @@ public class adminMenu implements Prompt {
 				
 			case "3":
 				 
+				System.exit(0);
 				exitAdmin=false;
+				
 				
 				break;
 			

@@ -17,9 +17,9 @@ public class AccountSerializer implements AccountDao {
 	 
 	 
 	@Override
-	public boolean saveLog(String l ) {
+	public boolean saveLog(String l, int accnt ) {
 		 
-		List<String> logs = findAllLogs();
+		List<String> logs = findAllLogs(accnt);
 		if (logs == null) { // initialize a new list if none was given to us
 			logs = new ArrayList<>();
 		}
@@ -27,7 +27,7 @@ public class AccountSerializer implements AccountDao {
 		// add the new book to the list
 				logs.add(l);
 			
-			try(ObjectOutputStream outStream = new ObjectOutputStream(new FileOutputStream("Logs.txt"))) {
+			try(ObjectOutputStream outStream = new ObjectOutputStream(new FileOutputStream(String.valueOf(accnt)+"Logs.txt"))) {
 				
 				outStream.writeObject(logs); // serialize the list to the file
 				return true;
@@ -48,9 +48,9 @@ public class AccountSerializer implements AccountDao {
 	}
 
 	@Override
-	public List<String> findAllLogs() {
+	public List<String> findAllLogs(int accnt) {
 		
-		try (ObjectInputStream  inStream= new ObjectInputStream(new FileInputStream("Logs.txt"))){
+		try (ObjectInputStream  inStream= new ObjectInputStream(new FileInputStream(String.valueOf(accnt)+"Logs.txt"))){
 			try {
 				return (List<String>) inStream.readObject();
 			
