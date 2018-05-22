@@ -14,7 +14,10 @@ import com.revature.beans.Person;
 
 public class AccountSerializer implements AccountDao {
 
-	 
+	 /*
+	  *  
+	  *  Logs DAO methods 
+	  */
 	 
 	@Override
 	public boolean saveLog(String l, int accnt ) {
@@ -184,6 +187,12 @@ public Account FindByAccntByUser(Person p) {
 	
 	
 }
+
+
+/*
+ *  
+ *  Balance DAO methods 
+ */
 
 @Override
 public void saveBalance(double balance, int accnt) {

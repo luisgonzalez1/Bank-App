@@ -27,13 +27,7 @@ public class CreateUser implements Prompt   {
 			AccountDao accntDao =new AccountSerializer();
 			
 			
-//			Account accnt1 = new Account(0000,0.0);
-////			accnt1.setLogs("=========================================");
-////			accntDao.saveLog(accnt1.getLogs());
-//			System.out.println("created");
-//			Person customer1 = new Person("Luis", "Gonzalez", new Account(0, 0), "Admin", "1234");
-//			personDao.save(customer1);
-// 			System.out.println("created");
+
 		List<Person> list = personDao.findAll();
 			double amount=0;
 			String userName="";
@@ -57,7 +51,9 @@ public class CreateUser implements Prompt   {
 			
 			
 			
-			/////////////////////////////
+			/*
+			 * verifies if the user name is already on file 
+			 */
 			
 			boolean exitUsername=true;
 			while(exitUsername) {
@@ -73,31 +69,48 @@ public class CreateUser implements Prompt   {
 			System.out.println("Please enter your password");
 			String passWord = scan.nextLine();
 			
-			////////////////////////////
+			/*
+			 * Input validation
+			 */
 			
 			boolean exitAmount=true;
 			while(exitAmount) {
 			System.out.println("How much will you start your accnt with");
-		    amount = Double.parseDouble(scan.nextLine());
+
+
+			
+			try {
+				 amount = Double.parseDouble(scan.nextLine());
+			 }
+			 
+			 catch(NumberFormatException e) {
+				 
+				 System.out.println("This is not a number");
+		         System.out.println(e.getMessage());
+			 }  
 			
 			
 			if (amount <=0) {
 				System.out.println("amount not valid ");
 				System.out.println("Please try a different amount");
 				 
-				amount = Double.parseDouble(scan.nextLine());
-				
 			} else exitAmount=false;
+				
+				
+				
+			 
 		}
 			
-			
+			/*
+			 * Reads number from file and asing as accnt number
+			 */
 			 
 			int accntNumber = getAccntNumberFromFile();
 			accntNumber+=1;
 			setAccntNumberFile(accntNumber);
 			 
 			
-    
+			amount=(Math.round(amount)*100.0/100.0);
 					
 			Account accnt = new Account(accntNumber,amount );
 			Person customer = new Person(name, lastName, accnt, userName, passWord);
@@ -134,6 +147,7 @@ public class CreateUser implements Prompt   {
 				case "2":
 					System.out.println("Thanks for using our bank");
 					continueOrExit=false;
+					System.exit(0);
 					break;
 				
 				default:

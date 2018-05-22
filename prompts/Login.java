@@ -26,29 +26,33 @@ public class Login implements Prompt {
 		 * Displaying Customers list for testing 
 		 */
 		List<Person> customers =new ArrayList<Person>(); 	 
-	   customers = personDao.findAll();
+	    customers = personDao.findAll();
 	    AccountDao accntDao =new AccountSerializer();
-	for(Person p:customers) {
+	    for(Person p:customers) {
 		
 		System.out.println(p);
 		}
-	    
+	    /*
+		 * over writing admin user
+		 */
 		 //accntDao.saveLog("Administrator no transaction to view",0);
 		//accntDao.saveBalance(0, 0);
 	    
 		boolean exit=true;
 		while(exit) {
-		System.out.println("Welcome to the bank");
+		System.out.println("Welcome to the Mega Bank");
 		System.out.println("What would you like to do  ");
 		System.out.println("1: Register ");
 		System.out.println("2: Login");
-		System.out.println("3: exit");
+		System.out.println("3: Exit");
 
-		 scan = new Scanner(System.in);
+		scan = new Scanner(System.in);
 		String input = scan.nextLine();
 		switch (input) {
 		case "1":
-			
+			 /*
+			 * redirects to CreatUser Prompt
+			 */
 			return new CreateUser();
 			
 			//break;
@@ -56,7 +60,9 @@ public class Login implements Prompt {
 		
 		case "2":
 		
-		 ////////////////////////////////////////
+			/*
+			 * login
+			 */
 		boolean correct=true;
 		while(correct) {
 		System.out.println("Please enter Username ");
@@ -67,19 +73,26 @@ public class Login implements Prompt {
 		
 	    String Password = scan.nextLine();
 	    
-	     
+	    /*
+		 * Verifies that user exist
+		 */
 	     if(personDao.FindByUserAndPass(userName, Password)) {
 	    	 
 	    	 System.out.println("user found");
 	    	 
 	    	 Person loggedUser=personDao.getByUserAndPass(userName, Password);
 	    	 
+	    	 /*
+			  * Saves Logged user in txt CurrentlyLogged.txt 
+			  */
+	    	 
 	    	 personDao.setCurrentlyLogged(loggedUser);
 	    	 
 	    	 correct=false;
 	    	 /*
 	    	  * verifies if the user retrieved is an Admin 
-	    	  */  if(loggedUser.getUserName().equals("Admin")){
+	    	  */ 
+	    	 if(loggedUser.getUserName().equals("Admin")){
 	    		  
 	    		   		  
 	    		  return new adminMenu();
@@ -102,9 +115,9 @@ public class Login implements Prompt {
 		
 		case "3":
 			
-			System.out.println("Thaks for visiting our bank");
+			System.out.println("Thanks for visiting Mega Bank");
 			exit=false;
-		
+		    System.exit(0);
 		
 		default:
 		System.out.println("Invalid option");

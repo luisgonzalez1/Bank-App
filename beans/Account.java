@@ -62,9 +62,7 @@ public class Account implements Serializable {
 	public void setDepositAmount(double depositAmount) {
 		this.depositAmount = depositAmount;
 	}
-	/*
-	 * adding log setter getter 
-	 */
+	
 	
 	public String getLog() {
 		return log;
@@ -72,10 +70,17 @@ public class Account implements Serializable {
 	public void setLog(String log) {
 		this.log = log;
 	}
+	/*
+	 * Deposit
+	 */
 	
 	public void deposit( ){
 
  		AccountDao accntDao =new AccountSerializer();
+ 		
+ 		/*
+ 		 * Gets Balance from file Balance.txt
+ 		 */
 
         this.balance=accntDao.getBlance(this.accntNumber);
 	 
@@ -85,6 +90,9 @@ public class Account implements Serializable {
 		 System.out.println("How much would you like to deposit?");
 		 input = scan.nextLine();
 		 
+		 /*
+	 	  * Verifies Input
+	 	 */
 		 
 		 try {
 			 this.depositAmount =Double.parseDouble(input);
@@ -101,7 +109,10 @@ public class Account implements Serializable {
 			System.out.println("incorrect amount ");
 		
 		}else {
-			this.balance= this.balance+this.depositAmount;
+			this.depositAmount = (Math.round(this.depositAmount*100.0)/100.0);
+			this.balance = (Math.round(this.balance)*100.0/100.0);
+			this.balance= this.balance+this.depositAmount ;
+			
 			accntDao.saveBalance(this.balance, this.accntNumber);
 			System.out.println("Your new balance is " + this.balance);
 			this.addTransactionLog("deposit");		
@@ -134,7 +145,9 @@ public class Account implements Serializable {
 			System.out.println("How mush would you like to withdraw?");
 			 input = scan.nextLine();
 			 
-			 ///////TEST INPUT FROM USER //////////
+			 /*
+		 	  * Verifies Input
+		 	 */
 			  
 					 try {
 						 this.withdrawAmount = Double.parseDouble(input);
@@ -156,7 +169,10 @@ public class Account implements Serializable {
 						   
 						  
 					  }else {
+				  this.withdrawAmount = (Math.round(this.withdrawAmount)*100.0/100.0);
+				  this.balance = (Math.round(this.balance)*100.0/100.0);
 				  this.balance= this.balance-this.withdrawAmount;
+				  
 				  System.out.println("Your remaining balance id "+ this.balance);
 				  accntDao.saveBalance(this.balance, this.accntNumber);
 				  this.addTransactionLog("withdrawal");		

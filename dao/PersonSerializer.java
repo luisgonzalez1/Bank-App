@@ -145,7 +145,10 @@ public boolean userNameExist(String userName ) {
 
 
 	
-	
+	/*
+	 *  
+	 *  sets with person its currently logged
+	 */
 	
 	
 	public boolean setCurrentlyLogged(Person p) {
@@ -165,6 +168,11 @@ public boolean userNameExist(String userName ) {
 		return false;
 		
 	}
+	
+	/*
+	 *  
+	 *  sets which person its currently logged
+	 */
 	
 	public Person  getCurrentlyLogged() {
 		
