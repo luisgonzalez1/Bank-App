@@ -75,7 +75,7 @@ public class Login implements Prompt {
 	    	 correct=false;
 	    	 /*
 	    	  * verifies if the user retrieved is an Admin 
-	    	  */  if(loggedUser.getName().equals("Admin")){
+	    	  */  if(loggedUser.getUserName().equals("Admin")){
 	    		  
 	    		   		  
 	    		  return new adminMenu();

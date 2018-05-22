@@ -11,6 +11,8 @@ import java.util.Scanner;
 
 import com.revature.beans.Account;
 import com.revature.beans.Person;
+import com.revature.dao.AccountDao;
+import com.revature.dao.AccountSerializer;
 import com.revature.dao.PersonDao;
 import com.revature.dao.PersonSerializer;
 
@@ -21,10 +23,18 @@ public class CreateUser implements Prompt   {
 		public Prompt run() {
 //			setAccntNumberFile();
 //			System.out.println("number saved on file");
-			 
-			
 			PersonDao personDao = new PersonSerializer();
-			List<Person> list = personDao.findAll();
+			AccountDao accntDao =new AccountSerializer();
+			
+			
+//			Account accnt1 = new Account(0000,0.0);
+////			accnt1.setLogs("=========================================");
+////			accntDao.saveLog(accnt1.getLogs());
+//			System.out.println("created");
+//			Person customer1 = new Person("Luis", "Gonzalez", new Account(0, 0), "Admin", "1234");
+//			personDao.save(customer1);
+// 			System.out.println("created");
+		List<Person> list = personDao.findAll();
 			double amount=0;
 			String userName="";
 			
@@ -33,8 +43,7 @@ public class CreateUser implements Prompt   {
 				System.out.println(p);
 				System.out.println("accnt info" + p.getAccnt().toString());
 			}
-			 
-			 
+			
 			
 			
 			Scanner scan =new Scanner(System.in);
@@ -179,7 +188,7 @@ public class CreateUser implements Prompt   {
 			
 			
 			return 0;
-			
+			//return null;
 		}
 	
 }// end

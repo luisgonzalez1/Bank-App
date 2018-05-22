@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.dao.AccountDao;
+import com.revature.dao.AccountSerializer;
+
 public class Account implements Serializable {
 	
 	
@@ -15,19 +18,19 @@ public class Account implements Serializable {
 	private double balance;
 	private double withdrawAmount;
 	private double depositAmount;
-    private String  log; // adding logs to the class accounts
+	private String log;
+    //private List<String> logs;
 	
 	
 	
 	
- 
+	//private List<String> logList =new ArrayList<String>();
 //	Scanner scan = new Scanner(System.in);
 //	String input ="";  
 	public Account(int accntNumber, double d) {
 		super();
 		this.accntNumber = accntNumber;
 		this.balance = d;
-		 
 		
 	}
 	public int getAccntNumber() {
@@ -54,15 +57,16 @@ public class Account implements Serializable {
 	public void setDepositAmount(double depositAmount) {
 		this.depositAmount = depositAmount;
 	}
-	// adding setters and getters of the log variable
+	/*
+	 * adding log setter getter 
+	 */
 	
-	public String getLogs() {
+	public String getLog() {
 		return log;
 	}
-	public void setLogs(String logs) {
+	public void setLog(String log) {
 		this.log = log;
 	}
-	
 	
 	public void deposit( ){
 		Scanner scan = new Scanner(System.in);
@@ -123,22 +127,22 @@ public class Account implements Serializable {
 		 
 	
 	public void addTransactionLog (String type) {
-		
+		AccountDao accntDao =new AccountSerializer();
 		 Date dNow = new Date( );
 		  
-		 String log;
+		// String log;
 	     SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
 	     
 			      if(type.equals("deposit")) {
 		          
-			      log=("Time: " + ft.format(dNow)+ " Deposit amount : "+this.depositAmount+" Remaining Balance :" + this.balance);
-			      logList.add(log);
-			      
+			      this.log=("Time: " + ft.format(dNow)+ " Deposit amount : "+this.depositAmount+" Remaining Balance :" + this.balance);
+			      //logList.add(log);
+			      accntDao.saveLog(this.log);
 			      }else if (type.equals("withdrawal")){
 			    	  
-			    	  log=("Time: " + ft.format(dNow)+ " Withdrawal amount : -"+this.withdrawAmount+" Remaining Balance :" + this.balance);
-			    	  logList.add(log);
-			    	  
+			    	  this.log=("Time: " + ft.format(dNow)+ " Withdrawal amount : -"+this.withdrawAmount+" Remaining Balance :" + this.balance);
+			    	  //logList.add(log);
+			    	  accntDao.saveLog(this.log);
 			    	  
 			    	  /*
 			    	   * Here goes saving log into file
@@ -154,12 +158,14 @@ public class Account implements Serializable {
 	}
 		 
 		public void viewTransactionLog () {
-			
-			if(this.logList.isEmpty()) {
+			AccountDao accntDao =new AccountSerializer();
+			List<String> logs = new ArrayList<>();
+			logs=accntDao.findAllLogs();
+			if(logs.isEmpty()) {
 				
 				System.out.println("no transactions available  ");
 			}else {
-				for (String l:this.logList) {
+				for (String l:logs) {
 					
 					System.out.println(l);
 				}

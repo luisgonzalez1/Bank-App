@@ -8,7 +8,7 @@ import com.revature.beans.Person;
 
 public interface AccountDao {
 	
-	boolean save(Account b);
+ 
 	
 	
 	public boolean saveLog (String l);

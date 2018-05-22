@@ -75,6 +75,7 @@ public class mainMenu   implements Prompt{
 		//mainMenu main =new mainMenu();
 		
 //	Account accnt1 = new Account(0000,0.0);
+
 //		Account accnt2 = new Account(0002,10000.00);
 //		Account accnt3 = new Account(0003,565284.00);
 //		Account accnt4 = new Account(0004,50.00);
@@ -82,7 +83,7 @@ public class mainMenu   implements Prompt{
 //		Account accnt6 = new Account(0006,500000000.00);
 		 
 //		
-//		Person customer1 = new Person("Admin", "Admin", accnt1, "Admin", "1234");
+//		Person customer1 = new Person("Luis", "Gonzalez", accnt1, "Admin", "1234");
 //		
 //		
 //		 
