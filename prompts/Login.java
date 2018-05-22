@@ -33,7 +33,7 @@ public class Login implements Prompt {
 			System.out.println(p);
 		}
 	    
-		 accntDao.saveLog("Aministrator no transaction to view",0);
+		 //accntDao.saveLog("Administrator no transaction to view",0);
 	    
 		boolean exit=true;
 		while(exit) {

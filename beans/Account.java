@@ -76,7 +76,17 @@ public class Account implements Serializable {
 		
 		 System.out.println("How much would you like to deposit?");
 		 input = scan.nextLine();
-		 this.depositAmount =Double.parseDouble(input);
+		 
+		 
+		 try {
+			 this.depositAmount =Double.parseDouble(input);
+		 }
+		 
+		 catch(NumberFormatException e) {
+			 
+			 System.out.println("This is not a number");
+	         System.out.println(e.getMessage());
+		 } 		 
 		 
 		if(this.depositAmount <=0d ) {
 			
@@ -105,20 +115,33 @@ public class Account implements Serializable {
 			
 			System.out.println("How mush would you like to withdraw?");
 			 input = scan.nextLine();
-			 this.withdrawAmount = Double.parseDouble(input);
-			
-			  if ( this.withdrawAmount > this.balance ) {
-				  
-				  System.out.println("insufficient balance");	
-				   
-				  
-			  }else {
+			 
+			 ///////TEST INPUT FROM USER //////////
+			  
+					 try {
+						 this.withdrawAmount = Double.parseDouble(input);
+					 }
+					 
+					 catch(NumberFormatException e) {
+						 
+						 System.out.println("This is not a number");
+				         System.out.println(e.getMessage());
+					 }  
+					   if (this.withdrawAmount <=0) {
+									  
+					   System.out.println("incorrect amount");
+						}	 
+					 
+					   else if( this.withdrawAmount > this.balance  ) {
+						  
+						  System.out.println("insufficient balance");	
+						   
+						  
+					  }else {
 				  this.balance= this.balance-this.withdrawAmount;
 				  System.out.println("Your remaining balance id "+ this.balance);
-				  this.addTransactionLog("withdrawal");
-				  
-			  }
-		  
+				  this.addTransactionLog("withdrawal");				  
+			  }		  
 		}else {
 			
 			System.out.println("accnt doesn't have sufficient funds ");

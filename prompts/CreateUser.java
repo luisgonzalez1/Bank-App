@@ -122,7 +122,7 @@ public class CreateUser implements Prompt   {
 				System.out.println("Your accnt has been created");
 				System.out.println("What would you like to do");
 				System.out.println("1: Manage accnt");
-				System.out.println("1: exit accnt");
+				System.out.println("2: exit accnt");
 				String input=  scan.nextLine();
 				switch (input){
 					
